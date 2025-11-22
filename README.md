@@ -151,33 +151,31 @@ All requests must go through API Gateway, and every microservice validates the J
 
 ## 🚀 Running the Project (Local Setup)
 
----
-
 ### 1️⃣ Start Config Server
 
-cd config-server
-mvn spring-boot:run
+- cd config-server
+- mvn spring-boot:run
 
 2️⃣ Start Eureka Server
-cd eureka-server
-mvn spring-boot:run
+- cd eureka-server
+- mvn spring-boot:run
 
 3️⃣ Start Microservices
 ▶️ User Service
-cd user-service
-mvn spring-boot:run
+- cd user-service
+- mvn spring-boot:run
 
 ▶️ Hotel Service
-cd hotel-service
-mvn spring-boot:run
+- cd hotel-service
+- mvn spring-boot:run
 
 ▶️ Rating Service
-cd rating-service
-mvn spring-boot:run
+- cd rating-service
+- mvn spring-boot:run
 
 4️⃣ Start API Gateway
-cd api-gateway
-mvn spring-boot:run
+- cd api-gateway
+- mvn spring-boot:run
 
 
 🧪 Testing the APIs
@@ -229,6 +227,7 @@ GET http://localhost:8083/hotels/1
 
 → Docker + Kubernetes deployment
 </p>
+```
 
 <h3 align="center">⭐ If you like this project, don't forget to star the repo!</h3>
 
