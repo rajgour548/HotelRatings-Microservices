@@ -124,6 +124,7 @@ All requests must go through API Gateway, and every microservice validates the J
 - Databases	MySQL / MongoDB / PostgreSQL
 - Build Tool	Maven
 - Language	Java 17
+  
 📁 Project Structure
 - /api-gateway
 - /eureka-server
@@ -134,7 +135,7 @@ All requests must go through API Gateway, and every microservice validates the J
 - /assets/diagram.png
 - /README.md
 
-Config Repo
+🔗 Config Repo
 /config-repo
   → application.yml
   → user-service.yml
@@ -176,11 +177,11 @@ GET http://localhost:8083/hotels/1
 
 🔒 Production Notes
 
-✔ Gateway is Public
-✔ Microservices Private
-✔ JWT validated at Gateway + Microservices
-✔ Zero-Trust Architecture
-✔ Centralized Git-backed configuration
+- Gateway is Public
+- Microservices Private
+- JWT validated at Gateway + Microservices
+- Zero-Trust Architecture
+- Centralized Git-backed configuration
 
 ✨ Features Demonstrated
 
