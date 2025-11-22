@@ -45,7 +45,7 @@ This project implements a real-world microservices architecture using:
 🛡️ Zero Trust Security Model
 
 All requests must go through API Gateway, and every microservice validates the JWT again.
-</p>
+
 🧩 Microservices Included
 1️⃣ User Service
 
@@ -209,6 +209,7 @@ GET http://localhost:8083/hotels/1
 → API Rate Limiting / Throttling
 
 → Docker + Kubernetes deployment
+</p>
 
 <h3 align="center">⭐ If you like this project, don't forget to star the repo!</h3>
 
