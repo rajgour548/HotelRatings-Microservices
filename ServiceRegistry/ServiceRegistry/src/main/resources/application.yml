@@ -1,0 +1,19 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+spring:
+  application:
+    name: EUREKA-SERVER
+
+#this project includes multiple microservices two of them using mysql database and one using mongoatlas ,api-gateway is there to globally
+#call each service with same base uri there is inter-communication established b/w services services are registered on eureka
+#configurations are externalized on github each importing their config using config-server which is another microservice ,
+# resiliense4j library is also implemented for fault tolerance as multiple networks occuring it includes -> circuitbreker,retry,ratelimiter
+# i have also worked with feignclient for one service calling-> another service , and actuator for health monitoring and management
+# i have experienced eureka ui that keep records of all the microservices

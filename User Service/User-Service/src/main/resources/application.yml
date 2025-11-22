@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: user-service
+  profile:
+    active: default #if you want to add production enviroment configuration then create user-service-prod.yml on githubconfig repo and change active profile to prod to fetch prod configs
+  config:
+     import: optional:configserver:http://localhost:8084
+  security:
+   oauth2:
+     resourceserver:
+       jwt:
+         issuer-uri: https://dev-nzmagm11qqjt38mo.us.auth0.com/
+auth0:
+  connection: Username-Password-Authentication
+  domain: YOUR_TENANT.auth0.com
+  m2m:
+    client-id: YOUR_M2M_CLIENT_ID
+    client-secret: YOUR_M2M_CLIENT_SECRET
