@@ -24,6 +24,9 @@ A secure, production-style microservice system built using Spring Boot, Java 17,
   <img src="https://img.shields.io/github/license/rajgour/Hotel-Ratings-Microservices?color=lightgrey" />
 </p>
 
+# 🏗️ Architecture Diagram
+![Architecture](Architecture.png)
+
 ---
 <p>
 📌 Overview
@@ -137,12 +140,12 @@ All requests must go through API Gateway, and every microservice validates the J
 
 🔗 Config Repo
 /config-repo
-  → application.yml
-  → user-service.yml
-  → hotel-service.yml
-  → rating-service.yml
-  → api-gateway.yml
-  → eureka-server.yml
+  - application.yml
+  - user-service.yml
+  - hotel-service.yml
+  - rating-service.yml
+  - api-gateway.yml
+  - eureka-server.yml
 
 🚀 Running the Project (Local Setup)
 1️⃣ Start Config Server
