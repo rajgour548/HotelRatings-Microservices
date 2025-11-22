@@ -139,13 +139,12 @@ All requests must go through API Gateway, and every microservice validates the J
 - /README.md
 
 🔗 Config Repo
-/config-repo
-  - application.yml
-  - user-service.yml
-  - hotel-service.yml
-  - rating-service.yml
-  - api-gateway.yml
-  - eureka-server.yml
+/Hotel-Ratings-Microservices-Config
+- apigateway.yml
+- configserver.yml
+- hotelservice.yml
+- ratingservice.yml
+- user-service.yml
 
 🚀 Running the Project (Local Setup)
 1️⃣ Start Config Server
