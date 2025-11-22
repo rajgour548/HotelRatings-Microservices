@@ -1,4 +1,3 @@
-# HotelRatings-Microservices
 <h1 align="center">🏨 Hotel Ratings Microservices Architecture</h1>
 
 <p align="center">
@@ -32,4 +31,3 @@ Below is the complete system architecture:
 
 ![Architecture](./final_architecture_preview.png)
 
-This project is a secure microservices-based system built with Spring Boot, providing hotel rating functionalities using a modern distributed architecture.
