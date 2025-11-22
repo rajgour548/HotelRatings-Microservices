@@ -25,7 +25,7 @@ A secure, production-style microservice system built using Spring Boot, Java 17,
 </p>
 
 ---
-<p>
+<p align="center">
 📌 Overview
 
 This project implements a real-world microservices architecture using:
