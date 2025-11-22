@@ -146,7 +146,6 @@ All requests must go through API Gateway, and every microservice validates the J
 - ratingservice.yml
 - user-service.yml
 
-Just copy–paste this into your README:
 
 ## 🚀 Running the Project (Local Setup)
 
