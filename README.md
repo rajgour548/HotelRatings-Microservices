@@ -28,8 +28,9 @@ A secure, production-style microservice system built using Spring Boot, Java 17,
 ![Architecture](Architecture.png)
 
 ---
-<p>
  ```bash
+
+
 📌 Overview
 
 This project implements a real-world microservices architecture using:
@@ -49,7 +50,7 @@ This project implements a real-world microservices architecture using:
 🛡️ Zero Trust Security Model
 
 All requests must go through API Gateway, and every microservice validates the JWT again.
-
+ 
 🧩 Microservices Included
 1️⃣ User Service
 
