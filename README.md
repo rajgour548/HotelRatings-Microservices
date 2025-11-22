@@ -27,230 +27,189 @@ A secure, production-style microservice system built using Spring Boot, Java 17,
 ---
 📌 Overview
 
-This project is a secure microservices-based system built with Spring Boot, providing hotel rating functionalities using a modern distributed architecture.
+This project implements a real-world microservices architecture using:
 
-It follows real-world production patterns:
+🌐 Public API Gateway
 
-API Gateway (Public)
+🔐 Private Microservices
 
-Private Microservices
+🔑 Auth0 JWT Authentication
 
-Auth0 JWT Authentication
+⚙️ Spring Cloud Config Server
 
-Eureka Service Registry
+🔍 Eureka Server
 
-Spring Cloud Config Server
+🔗 Internal REST communication
 
-Inter-Service Internal Communication
+🛡️ Zero Trust Security Model
 
-Token validation at Gateway + microservices
-
-🏗️ Architecture Diagram
-
-(Place your final generated diagram here)
-Example:
-![Architecture](./Architecture.png)
-
+All requests must go through API Gateway, and every microservice validates the JWT again.
 
 🧩 Microservices Included
 1️⃣ User Service
 
-Manages user details
-
-Issues no auth — only verifies JWT
-
-Registers with Eureka
-
-Gets configuration from Config Server
-
-Internal communication with Hotel & Rating services
+✔ Manages user info
+✔ Validates JWT
+✔ Registered with Eureka
+✔ Config fetched from Config Server
+✔ Calls Hotel + Rating internally
 
 2️⃣ Hotel Service
 
-Manages hotel information
-
-Communicates internally with Rating Service & User Service
-
-All requests validated using JWT (via Keycloak/Okta/Auth0 converter)
+✔ Manages hotel data
+✔ Communicates with Rating + User services
+✔ Token validation using Auth0 JWT converter
 
 3️⃣ Rating Service
 
-Stores ratings for hotels by users
+✔ Stores user ratings
+✔ Aggregates rating data for hotels
+✔ Calls Hotel/User microservices internally
 
-Provides rating aggregation APIs
+4️⃣ API Gateway (Only Public Component)
 
-Internal REST calls to Hotel/User services
+✔ Validates JWT
+✔ Forwards token downstream
+✔ Uses Eureka for routing
+✔ No business logic
 
-4️⃣ API Gateway (Public Entry Point)
+5️⃣ Eureka Server
 
-Only public-facing component
-
-Validates Auth0-issued JWT
-
-Forwards authenticated requests to microservices
-
-Uses Eureka to dynamically route to services
-
-Adds no additional business logic
-
-5️⃣ Eureka Server (Service Discovery)
-
-All microservices register here
-
-API Gateway uses Eureka for load balancing
-
-Allows dynamic scaling of services
+✔ Registers all services
+✔ Enables dynamic routing
+✔ Ensures scalability
 
 6️⃣ Spring Cloud Config Server
 
-Provides centralized configuration to:
+✔ Centralized configuration
+✔ Backend Git repository
+✔ Serves configs to:
 
-User Service
+→ User Service
 
-Hotel Service
+→ Hotel Service
 
-Rating Service
+→ Rating Service
 
-API Gateway
+→ Gateway
 
-Eureka Server
+→ Eureka Server
 
-Loads configs from GitHub configuration repository
+🔐 Authentication Flow (Auth0 JWT)
+Client → Auth0 → Receives JWT  
+Client → API Gateway (JWT validated)
+Gateway → Specific Microservice (JWT validated again)
+Microservices ↔ Internal Communication
 
-🔐 Authentication & Authorization (Auth0)
 
-Clients authenticate with Auth0
+✔ Microservices are private
+✔ Gateway is public
+✔ All internal traffic secured
 
-Receive JWT Access Token
-
-Token is passed in Authorization: Bearer <token> header
-
-API Gateway validates token
-
-Gateway forwards token to microservices
-
-Microservices again validate token + roles
-
-No service accepts traffic directly from internet
-
-This ensures zero-trust, secure backend.
-
-🌐 Request Flow (End-to-End)
-
-1️⃣ Client → Auth0
-User authenticates → receives JWT.
-
-2️⃣ Client → Public API Gateway
-Client calls an endpoint using JWT.
-Gateway verifies token and forwards request.
-
-3️⃣ Gateway → Eureka
-Gateway looks up the correct microservice.
-
-4️⃣ Gateway → Specific Microservice
-Routes request internally to User/Hotel/Rating service.
-Microservice again validates JWT + roles.
-
-5️⃣ Microservices → Other Microservices
-Internal communication happens for aggregated responses.
+🌐 End-to-End Request Flow
+✔ Client → Auth0 (Login, JWT)
+✔ Client → API Gateway (Authorize)
+✔ Gateway → Eureka (Find Service)
+✔ Gateway → User/Hotel/Rating (Forward)
+✔ Microservices ↔ Microservices (Internal Calls)
 
 🛠️ Technology Stack
-Layer	Technology
-Client Authentication	Auth0 (OIDC, JWT)
-Routing	Spring Cloud API Gateway
-Service Discovery	Eureka Server
-Configurations	Spring Cloud Config Server + Git Repo
-Services	Spring Boot 3 (Web, Data, Security, Actuator)
-Security	Spring Security + Auth0 JWT Converter
-Database	Any (MongoDB, PostgreSQL, MySQL depending on service)
-Build Tool	Maven
-Language	Java 17
+✔ Component	Technology
+✔ Authentication	Auth0 (JWT / OIDC)
+✔ Gateway	Spring Cloud API Gateway
+✔ Service Registry	Eureka Server
+✔ Configurations	Spring Cloud Config
+✔ Microservices	Spring Boot 3
+✔ Databases	MySQL / MongoDB / PostgreSQL
+✔ Build Tool	Maven
+✔ Language	Java 17
 📁 Project Structure
-/api-gateway
-/eureka-server
-/config-server
-/user-service
-/hotel-service
-/rating-service
+- /api-gateway
+- /eureka-server
+- /config-server
+- /user-service
+- /hotel-service
+- /rating-service
+- /assets/diagram.png
+- /README.md
 
-
-Your configuration repo:
-
+Config Repo
 /config-repo
-  - application.yml
-  - user-service.yml
-  - hotel-service.yml
-  - rating-service.yml
-  - api-gateway.yml
-  - eureka-server.yml
+  → application.yml
+  → user-service.yml
+  → hotel-service.yml
+  → rating-service.yml
+  → api-gateway.yml
+  → eureka-server.yml
 
 🚀 Running the Project (Local Setup)
-Step 1 — Start Config Server
+1️⃣ Start Config Server
 cd config-server
 mvn spring-boot:run
 
-Step 2 — Start Eureka Server
+2️⃣ Start Eureka
 cd eureka-server
 mvn spring-boot:run
 
-Step 3 — Start Microservices
-
-Order doesn’t matter (Eureka auto-reconnects)
-
+3️⃣ Start Microservices
 cd user-service && mvn spring-boot:run
 cd hotel-service && mvn spring-boot:run
 cd rating-service && mvn spring-boot:run
 
-Step 4 — Start API Gateway
+4️⃣ Start Gateway
 cd api-gateway
 mvn spring-boot:run
 
 🧪 Testing the APIs
 
-You must send JWT token from Auth0.
+➡️ Every request must include an Auth0 access token
 
-Use Postman/ThunderClient:
+- Postman → Authorization → Bearer Token
 
-Authorization → Bearer <your_access_token>
+- Authorization: Bearer <JWT_TOKEN>
 
 
-Example endpoint:
+Example:
 
 GET http://localhost:8083/hotels/1
 
 🔒 Production Notes
 
-✔ API Gateway is public
-✔ All microservices are private
-✔ JWT validated twice (gateway + services)
-✔ Communication is service-to-service only
-✔ No microservice exposed to external network
-✔ Configs stored in external Git-based config store
+✔ Gateway is Public
+✔ Microservices Private
+✔ JWT validated at Gateway + Microservices
+✔ Zero-Trust Architecture
+✔ Centralized Git-backed configuration
 
 ✨ Features Demonstrated
 
-Real-world distributed architecture
+→ Modern microservices architecture
 
-Secure Zero-Trust backend system
+→ Secure Auth0 authentication
 
-Centralized configuration
+→ Central config management
 
-Service discovery
+→ Service discovery
 
-Token-based security
+→ Dynamic routing
 
-Clean layered code structure
+→ Internal service communication
 
-Inter-microservice communication
+→ Token validation
+
+→ Distributed scaling support
 
 📌 Future Enhancements
 
-Add Circuit Breakers (Resilience4j)
+→ Circuit Breakers (Resilience4j)
 
-Add Distributed Tracing (Zipkin)
+→ Distributed Tracing (Zipkin)
 
-Add API Rate Limiting
+→ API Rate Limiting / Throttling
 
-Add Kubernetes deployment manifests
+→ Docker + Kubernetes deployment
+
+<h3 align="center">⭐ If you like this project, don't forget to star the repo!</h3>
+
 
 
