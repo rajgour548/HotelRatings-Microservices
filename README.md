@@ -49,42 +49,42 @@ All requests must go through API Gateway, and every microservice validates the J
 🧩 Microservices Included
 1️⃣ User Service
 
-✔ Manages user info
-✔ Validates JWT
-✔ Registered with Eureka
-✔ Config fetched from Config Server
-✔ Calls Hotel + Rating internally
+- Manages user info
+- Validates JWT
+- Registered with Eureka
+- Config fetched from Config Server
+- Calls Hotel + Rating internally
 
 2️⃣ Hotel Service
 
-✔ Manages hotel data
-✔ Communicates with Rating + User services
-✔ Token validation using Auth0 JWT converter
+- Manages hotel data
+- Communicates with Rating + User services
+- Token validation using Auth0 JWT converter
 
 3️⃣ Rating Service
 
-✔ Stores user ratings
-✔ Aggregates rating data for hotels
-✔ Calls Hotel/User microservices internally
+- Stores user ratings
+- Aggregates rating data for hotels
+- Calls Hotel/User microservices internally
 
 4️⃣ API Gateway (Only Public Component)
 
-✔ Validates JWT
-✔ Forwards token downstream
-✔ Uses Eureka for routing
-✔ No business logic
+- Validates JWT
+- Forwards token downstream
+- Uses Eureka for routing
+- No business logic
 
 5️⃣ Eureka Server
 
-✔ Registers all services
-✔ Enables dynamic routing
-✔ Ensures scalability
+- Registers all services
+- Enables dynamic routing
+- Ensures scalability
 
 6️⃣ Spring Cloud Config Server
 
-✔ Centralized configuration
-✔ Backend Git repository
-✔ Serves configs to:
+- Centralized configuration
+- Backend Git repository
+- Serves configs to:
 
 → User Service
 
@@ -97,33 +97,33 @@ All requests must go through API Gateway, and every microservice validates the J
 → Eureka Server
 
 🔐 Authentication Flow (Auth0 JWT)
-Client → Auth0 → Receives JWT  
-Client → API Gateway (JWT validated)
-Gateway → Specific Microservice (JWT validated again)
-Microservices ↔ Internal Communication
+- Client → Auth0 → Receives JWT  
+- Client → API Gateway (JWT validated)
+- Gateway → Specific Microservice (JWT validated again)
+- Microservices ↔ Internal Communication
 
 
-✔ Microservices are private
-✔ Gateway is public
-✔ All internal traffic secured
+- Microservices are private
+- Gateway is public
+- All internal traffic secured
 
 🌐 End-to-End Request Flow
-✔ Client → Auth0 (Login, JWT)
-✔ Client → API Gateway (Authorize)
-✔ Gateway → Eureka (Find Service)
-✔ Gateway → User/Hotel/Rating (Forward)
-✔ Microservices ↔ Microservices (Internal Calls)
+- Client → Auth0 (Login, JWT)
+- Client → API Gateway (Authorize)
+- Gateway → Eureka (Find Service)
+- Gateway → User/Hotel/Rating (Forward)
+- Microservices ↔ Microservices (Internal Calls)
 
 🛠️ Technology Stack
-✔ Component	Technology
-✔ Authentication	Auth0 (JWT / OIDC)
-✔ Gateway	Spring Cloud API Gateway
-✔ Service Registry	Eureka Server
-✔ Configurations	Spring Cloud Config
-✔ Microservices	Spring Boot 3
-✔ Databases	MySQL / MongoDB / PostgreSQL
-✔ Build Tool	Maven
-✔ Language	Java 17
+- Component	Technology
+- Authentication	Auth0 (JWT / OIDC)
+- Gateway	Spring Cloud API Gateway
+- Service Registry	Eureka Server
+- Configurations	Spring Cloud Config
+- Microservices	Spring Boot 3
+- Databases	MySQL / MongoDB / PostgreSQL
+- Build Tool	Maven
+- Language	Java 17
 📁 Project Structure
 - /api-gateway
 - /eureka-server
