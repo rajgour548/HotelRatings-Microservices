@@ -29,6 +29,7 @@ A secure, production-style microservice system built using Spring Boot, Java 17,
 
 ---
 <p>
+ ```bash
 📌 Overview
 
 This project implements a real-world microservices architecture using:
@@ -152,7 +153,7 @@ All requests must go through API Gateway, and every microservice validates the J
 ---
 
 ### 1️⃣ Start Config Server
-```bash
+
 cd config-server
 mvn spring-boot:run
 
