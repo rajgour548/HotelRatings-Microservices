@@ -146,23 +146,38 @@ All requests must go through API Gateway, and every microservice validates the J
 - ratingservice.yml
 - user-service.yml
 
-🚀 Running the Project (Local Setup)
-1️⃣ Start Config Server
+Just copy–paste this into your README:
+
+## 🚀 Running the Project (Local Setup)
+
+---
+
+### 1️⃣ Start Config Server
+```bash
 cd config-server
 mvn spring-boot:run
 
-2️⃣ Start Eureka
+2️⃣ Start Eureka Server
 cd eureka-server
 mvn spring-boot:run
 
 3️⃣ Start Microservices
-cd user-service && mvn spring-boot:run
-cd hotel-service && mvn spring-boot:run
-cd rating-service && mvn spring-boot:run
+▶️ User Service
+cd user-service
+mvn spring-boot:run
 
-4️⃣ Start Gateway
+▶️ Hotel Service
+cd hotel-service
+mvn spring-boot:run
+
+▶️ Rating Service
+cd rating-service
+mvn spring-boot:run
+
+4️⃣ Start API Gateway
 cd api-gateway
 mvn spring-boot:run
+
 
 🧪 Testing the APIs
 
