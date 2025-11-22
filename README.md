@@ -28,11 +28,11 @@ A secure, production-style microservice system built using Spring Boot, Java 17,
 ![Architecture](Architecture.png)
 
 ---
- ```bash
+
 
 
 📌 Overview
-
+ ```bash
 This project implements a real-world microservices architecture using:
 
 🌐 Public API Gateway
@@ -50,8 +50,9 @@ This project implements a real-world microservices architecture using:
 🛡️ Zero Trust Security Model
 
 All requests must go through API Gateway, and every microservice validates the JWT again.
- 
+ ```
 🧩 Microservices Included
+ ```bash
 1️⃣ User Service
 
 - Manages user info
@@ -100,8 +101,9 @@ All requests must go through API Gateway, and every microservice validates the J
 → Gateway
 
 → Eureka Server
-
+```
 🔐 Authentication Flow (Auth0 JWT)
+ ```bash
 - Client → Auth0 → Receives JWT  
 - Client → API Gateway (JWT validated)
 - Gateway → Specific Microservice (JWT validated again)
@@ -111,15 +113,17 @@ All requests must go through API Gateway, and every microservice validates the J
 - Microservices are private
 - Gateway is public
 - All internal traffic secured
-
+```
 🌐 End-to-End Request Flow
+ ```bash
 - Client → Auth0 (Login, JWT)
 - Client → API Gateway (Authorize)
 - Gateway → Eureka (Find Service)
 - Gateway → User/Hotel/Rating (Forward)
 - Microservices ↔ Microservices (Internal Calls)
-
+```
 🛠️ Technology Stack
+ ```bash
 - Component	Technology
 - Authentication	Auth0 (JWT / OIDC)
 - Gateway	Spring Cloud API Gateway
@@ -129,8 +133,9 @@ All requests must go through API Gateway, and every microservice validates the J
 - Databases	MySQL / MongoDB / PostgreSQL
 - Build Tool	Maven
 - Language	Java 17
-  
+  ```
 📁 Project Structure
+ ```bash
 - /api-gateway
 - /eureka-server
 - /config-server
@@ -139,8 +144,9 @@ All requests must go through API Gateway, and every microservice validates the J
 - /rating-service
 - /assets/diagram.png
 - /README.md
-
+```
 🔗 Config Repo
+ ```bash
 /Hotel-Ratings-Microservices-Config
 - apigateway.yml
 - configserver.yml
@@ -148,8 +154,9 @@ All requests must go through API Gateway, and every microservice validates the J
 - ratingservice.yml
 - user-service.yml
 
-
+```
 ## 🚀 Running the Project (Local Setup)
+ ```bash
 
 ### 1️⃣ Start Config Server
 
@@ -177,9 +184,9 @@ All requests must go through API Gateway, and every microservice validates the J
 - cd api-gateway
 - mvn spring-boot:run
 
-
+```
 🧪 Testing the APIs
-
+ ```bash
 ➡️ Every request must include an Auth0 access token
 
 - Postman → Authorization → Bearer Token
@@ -190,17 +197,17 @@ All requests must go through API Gateway, and every microservice validates the J
 Example:
 
 GET http://localhost:8083/hotels/1
-
+```
 🔒 Production Notes
-
+ ```bash
 - Gateway is Public
 - Microservices Private
 - JWT validated at Gateway + Microservices
 - Zero-Trust Architecture
 - Centralized Git-backed configuration
-
+```
 ✨ Features Demonstrated
-
+ ```bash
 → Modern microservices architecture
 
 → Secure Auth0 authentication
@@ -216,9 +223,9 @@ GET http://localhost:8083/hotels/1
 → Token validation
 
 → Distributed scaling support
-
+```
 📌 Future Enhancements
-
+ ```bash
 → Circuit Breakers (Resilience4j)
 
 → Distributed Tracing (Zipkin)
@@ -226,7 +233,7 @@ GET http://localhost:8083/hotels/1
 → API Rate Limiting / Throttling
 
 → Docker + Kubernetes deployment
-</p>
+
 ```
 
 <h3 align="center">⭐ If you like this project, don't forget to star the repo!</h3>
